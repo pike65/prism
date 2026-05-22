@@ -1,0 +1,19 @@
+[project]
+name = "prism"
+version = "0.1.0"
+description = "Prism Media Tracker Backend"
+readme = "README.md"
+authors = [
+    { name = "pike65", email = "pike00065@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.136.1",
+    "pydantic>=2.13.4",
+    "ruff>=0.15.14",
+    "sqlalchemy>=2.0.49",
+    "typing>=3.10.0.0",
+]
+
+[tool.uv]
+package = false

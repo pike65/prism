@@ -1,0 +1,23 @@
+# --- PYTHON ENVIRONMENT LABELS ---
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- LOCAL DATABASE INSTANCES (For SQLite testing) ---
+*.db
+*.sqlite3
+
+# --- SYSTEM & EDITOR DATA OVERHEAD ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# --- LOCAL SYSTEM PRIVATE ENVIRONMENT VARIABLE CONFIGS ---
+.env
+.env.local
