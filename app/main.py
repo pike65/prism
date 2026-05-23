@@ -1,6 +1,7 @@
-from fastapi import FastAPI, Depends, status
+from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from uuid import UUID
 from sqlalchemy.orm import Session
 
 from database.db import get_db, engine
@@ -40,6 +41,32 @@ def get_all_media(db_session: Session = Depends(get_db)):
             )
         )
     return result
+
+
+@app.get("/media/{media_id}", response_model=MediaRead)
+def get_media(media_id: str, db_session: Session = Depends(get_db)):
+    db_item = db_session.query(models.Media).filter(models.Media.media_id == media_id).first()
+
+    if db_item is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Media entry not found."
+        )
+
+    genres_set = {g.strip() for g in db_item.genres.split(",")} if db_item.genres else set()
+
+    found_media = MediaRead(
+        media_id=db_item.media_id,
+        title=db_item.title,
+        genre=db_item.genre,
+        genres=genres_set,
+        review=db_item.review,
+        rating=db_item.rating,
+        created_at=db_item.created_at,
+        last_edited=db_item.last_edited
+    )
+
+    return found_media
 
 
 @app.post("/media", response_model=MediaRead, status_code=status.HTTP_201_CREATED)
