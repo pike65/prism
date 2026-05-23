@@ -15,7 +15,7 @@ app = FastAPI(title="Prism", description="Media Consumption Tracker", version="1
 
 @app.get("/")
 def root():
-    return FileResponse("app/static/index.html")
+    return {"system": "is one"}
 
 
 @app.get("/media", response_model=list[MediaRead])
