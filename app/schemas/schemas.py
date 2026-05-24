@@ -1,35 +1,25 @@
 from pydantic import BaseModel, AfterValidator, Field
-from typing import Annotated, Literal
-from datetime import datetime, date
-from uuid import UUID
+from typing import Annotated
+from datetime import datetime
 
 
 def capitalize_each_word(v: str) -> str:
-    """Strip whitespace and capitalize the start of every word."""
     return v.strip().title()
 
 
-def sanitize_set_elements(v: set[str]) -> set[str]:
-    """Loop through a set, stripping and capitalizing each string item."""
-    return {capitalize_each_word(item) for item in v}
-
-
 def round_rating(v: float) -> float:
-    """Round up given float up to 1 digit after point."""
     return round(v, 1)
 
 
-TitleString = Annotated[str, AfterValidator(capitalize_each_word)]
-TitleSet = Annotated[set[str], AfterValidator(sanitize_set_elements)]
-Rating = Annotated[float, AfterValidator(round_rating)]
-Review = Annotated[str, Field(..., max_length=3000)]
+TitleString = Annotated[str, AfterValidator(capitalize_each_word), Field(min_length=1, max_length=32)]
+Rating = Annotated[float, AfterValidator(round_rating), Field(ge=1, le=10)]
+ReviewText = Annotated[str, Field(max_length=1000)]
 
 
 class MediaBase(BaseModel):
     title: TitleString
     genre: TitleString
-    genres: TitleSet
-    review: Review | None = None
+    review: ReviewText | None = None
     rating: Rating
 
 
@@ -40,4 +30,3 @@ class MediaInput(MediaBase):
 class MediaRead(MediaBase):
     created_at: datetime
     last_edited: datetime
-    media_id: UUID
