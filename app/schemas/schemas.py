@@ -11,7 +11,9 @@ def round_rating(v: float) -> float:
     return round(v, 1)
 
 
-TitleString = Annotated[str, AfterValidator(capitalize_each_word), Field(min_length=1, max_length=32)]
+TitleString = Annotated[
+    str, AfterValidator(capitalize_each_word), Field(min_length=1, max_length=32)
+]
 Rating = Annotated[float, AfterValidator(round_rating), Field(ge=1, le=10)]
 ReviewText = Annotated[str, Field(max_length=1000)]
 
