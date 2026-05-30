@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism — Create Account</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <defs>
+            <linearGradient id='prism-grad' x1='0%' y1='0%' x2='100%' y2='100%'>
+                <stop offset='0%' style='stop-color:%23f472b6;stop-opacity:1' />
+                <stop offset='50%' style='stop-color:%233b82f6;stop-opacity:1' />
+                <stop offset='100%' style='stop-color:%23a3e635;stop-opacity:1' />
+            </linearGradient>
+        </defs>
+        <polygon points='50 15, 15 80, 85 80' fill='url(%23prism-grad)' />
+    </svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="fullscreen-body">
+
+    <div class="auth-wrapper">
+        <a href="index.html" class="btn-back">← Home Page</a>
+
+        <main class="auth-card">
+            <h1 class="auth-headline">
+                Create your <span class="gradient-underline">account</span>
+            </h1>
+
+            <form class="auth-form" action="#" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="pike65" required autocomplete="username">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+
+            <p class="switch-auth">
+                Already have an account? <a href="login.html" class="auth-link login_link">Log in</a>
+            </p>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,3 +1,7 @@
+/* ==========================================================================
+   SECTION 1: GLOBAL SYSTEM (SHARED BY ALL PAGES)
+   ========================================================================== */
+
 /* --- VARS AND CONSTANTS --- */
 :root {
     --bg-primary: #ffffff;
@@ -5,14 +9,15 @@
     --text-secondary: #7c7c7c;
     --border-glow-1: #f472b6;
     --border-glow-2: #a3e635;
-    --font-main: 'Space Grotesk', -apple-system, sans-serif;
+    --border-glow-3: #3b82f6;
+    --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --brand-telegram: #229ED9;
     --brand-github: #0a0a0a;
 }
 
-/* --- GLOBAL RESET AND CORE LAYOUT --- */
+/* --- GLOBAL RESET AND CORE LAYOUTS --- */
 * {
     margin: 0;
     padding: 0;
@@ -24,11 +29,65 @@ body {
     color: var(--text-primary);
     font-family: var(--font-main);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+/* --- COMMON TYPOGRAPHY & INTERACTIVE CORE --- */
+.gradient-underline {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+
+.gradient-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--border-glow-1), var(--border-glow-3), var(--border-glow-2));
+    z-index: -1;
+}
+
+/* Base button framework properties */
+.btn-signup, .btn-start, .btn-submit {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: transparent;
+    border: 4px solid var(--text-primary);
+    border-radius: 50px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+/* Universal geometry micro-interactions rules */
+.btn-signup:hover, .btn-start:hover, .btn-submit:hover {
+    color: var(--bg-primary);
+    background-color: var(--text-primary);
+    border-color: transparent;
+    transform: scale(1.02);
+    box-shadow:
+        -5px -3px 0px 1px var(--border-glow-1),
+        5px 4px 0px 1px var(--border-glow-2);
+}
+
+.btn-signup:active, .btn-start:active, .btn-submit:active {
+    transform: scale(0.98);
+}
+
+
+/* ==========================================================================
+   SECTION 2: UNIQUE STYLES FOR index.html
+   ========================================================================== */
+
+/* --- INDEX APP CONTAINER SHAPING --- */
 .app-container {
     max-width: 1440px;
     width: 100%;
@@ -39,7 +98,7 @@ body {
     flex-direction: column;
 }
 
-/* --------------- HEADER --------------- */
+/* --- INDEX APP HEADER MODULE --- */
 .app-header {
     display: flex;
     align-items: center;
@@ -85,46 +144,22 @@ body {
 
 .brand-logo:hover .logo-icon {
     transform: rotate(180deg) scale(1.1);
-    background: linear-gradient(135deg, var(--border-glow-1), #3b82f6, var(--border-glow-2));
+    background: linear-gradient(135deg, var(--border-glow-1), var(--border-glow-3), var(--border-glow-2));
     -webkit-text-fill-color: transparent;
 }
 
-/* --- NAVIGATION ELEMENTS --- */
 .nav-actions {
     display: flex;
     align-items: center;
 }
 
 .btn-signup {
-    display: inline-block;
-    text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    color: var(--text-primary);
-    background-color: transparent;
     padding: 14px 28px;
-    border: 4px solid var(--text-primary);
-    border-radius: 50px;
-    position: relative;
-    cursor: pointer;
-    transition: var(--transition-smooth);
 }
 
-.btn-signup:hover {
-    color: var(--bg-primary);
-    background-color: var(--text-primary);
-    border-color: transparent;
-    transform: scale(1.02);
-    box-shadow:
-        -4px -2px 0px 1px var(--border-glow-1),
-        4px 3px 0px 1px var(--border-glow-2);
-}
-
-.btn-signup:active {
-    transform: scale(0.98);
-}
-
-/* --------------- MAIN --------------- */
+/* --- INDEX MAIN HERO BANNER ENGINE --- */
 .app-main {
     flex: 1;
     display: flex;
@@ -147,25 +182,6 @@ body {
     letter-spacing: -1.5px;
 }
 
-/* --- CUSTOM GRADIENT UNDERLINE --- */
-.gradient-underline {
-    display: inline-block;
-    position: relative;
-    white-space: nowrap;
-}
-
-.gradient-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 4px;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--border-glow-1), #3b82f6, var(--border-glow-2));
-    z-index: -1;
-}
-
-/* --- CONTENT STYLING --- */
 .hero-subtext {
     font-size: 20px;
     font-weight: 500;
@@ -175,33 +191,12 @@ body {
 }
 
 .btn-start {
-    display: inline-block;
-    text-decoration: none;
     font-size: 18px;
     font-weight: 700;
-    color: var(--text-primary);
-    background-color: transparent;
     padding: 18px 40px;
-    border: 4px solid var(--text-primary);
-    border-radius: 50px;
-    transition: var(--transition-smooth);
 }
 
-.btn-start:hover {
-    color: var(--bg-primary);
-    background-color: var(--text-primary);
-    border-color: transparent;
-    transform: scale(1.03);
-    box-shadow:
-        -5px -3px 0px 1px var(--border-glow-1),
-        5px 4px 0px 1px var(--border-glow-2);
-}
-
-.btn-start:active {
-    transform: scale(0.97);
-}
-
-/* --------------- FOOTER --------------- */
+/* --- INDEX APP SITE FOOTER --- */
 .app-footer {
     border-top: 1px solid #eaeaea;
     padding: 40px 0;
@@ -246,4 +241,174 @@ body {
 
 .gh-icon:hover {
     color: var(--brand-github);
+}
+
+
+/* ==========================================================================
+   SIGN UP AND LOGIN 
+   ========================================================================== */
+
+/* --- SHARED SCREEN SETUP --- */
+.fullscreen-body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 0 24px;
+}
+
+.auth-card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.auth-headline {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- SHARED INPUT CONTROLS --- */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.input-group input {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background-color: transparent;
+    padding: 14px 18px;
+    border: 3px solid var(--text-primary);
+    border-radius: 12px;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.input-group input::placeholder {
+    color: #c0c0c0;
+}
+
+.input-group input:focus {
+    transform: translateY(-2px);
+    box-shadow: 
+        -3px -1px 0px 0px var(--border-glow-1),
+        3px 2px 0px 0px var(--border-glow-2);
+}
+
+.btn-submit {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 0;
+    margin-top: 8px;
+}
+
+/* --- SHARED AUTH NAVIGATION --- */
+.btn-back {
+    position: absolute;
+    top: -48px;
+    left: 24px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+}
+
+.btn-back:hover {
+    color: var(--text-primary);
+}
+
+.switch-auth {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.auth-link {
+    color: var(--text-primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 1px;
+    transition: var(--transition-smooth);
+}
+
+.login_link:hover {
+    color: var(--border-glow-2);
+    border-color: var(--border-glow-2);
+}
+
+.signup_link:hover {
+    color: var(--border-glow-1);
+    border-color: var(--border-glow-1);
+}
+
+
+/* ==========================================================================
+   SECTION 4: UNIQUE STYLES FOR signup.html
+   ========================================================================== */
+
+/* --- SIGNUP LINK HOVER SPECIFICS --- */
+.signup-wrapper .auth-link:hover {
+    color: var(--border-glow-1);
+    border-color: var(--border-glow-1);
+}
+
+
+/* ==========================================================================
+   SECTION 5: UNIQUE STYLES FOR login.html
+   ========================================================================== */
+
+/* --- LOGIN ALIGNMENT HELPERS --- */
+.label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- LOGIN LINK HOVER SPECIFICS --- */
+.login-wrapper .auth-link:hover {
+    color: var(--border-glow-1);
+    border-color: var(--border-glow-1);
+}
+
+.forgot-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.forgot-link:hover {
+    color: var(--border-glow-3);
 }
