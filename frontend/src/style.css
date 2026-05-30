@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SECTION 1: GLOBAL SYSTEM (SHARED BY ALL PAGES)
+   GLOBAL SYSTEM (SHARED BY ALL PAGES)
    ========================================================================== */
 
 /* --- VARS AND CONSTANTS --- */
@@ -84,7 +84,7 @@ body {
 
 
 /* ==========================================================================
-   SECTION 2: UNIQUE STYLES FOR index.html
+   INDEX.HTML
    ========================================================================== */
 
 /* --- INDEX APP CONTAINER SHAPING --- */
@@ -245,7 +245,7 @@ body {
 
 
 /* ==========================================================================
-   SIGN UP AND LOGIN 
+   SIGN UP AND LOGIN (COMMON STYLES)
    ========================================================================== */
 
 /* --- SHARED SCREEN SETUP --- */
@@ -374,7 +374,7 @@ body {
 
 
 /* ==========================================================================
-   SECTION 4: UNIQUE STYLES FOR signup.html
+   SIGNUP.HTML
    ========================================================================== */
 
 /* --- SIGNUP LINK HOVER SPECIFICS --- */
@@ -385,7 +385,7 @@ body {
 
 
 /* ==========================================================================
-   SECTION 5: UNIQUE STYLES FOR login.html
+   LOGIN.HTML
    ========================================================================== */
 
 /* --- LOGIN ALIGNMENT HELPERS --- */
@@ -411,4 +411,27 @@ body {
 
 .forgot-link:hover {
     color: var(--border-glow-3);
+}
+
+
+/* ==========================================================================
+   AUTH BRAND FOOTER COMPONENT
+   ========================================================================== */
+
+.auth-brand-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--text-primary); 
+}
+
+.brand-text-logo {
+    font-size: 13px;       
+    font-weight: 700;      
+    color: var(--text-primary);
+    text-transform: lowercase;
+    user-select: none;
+    transition: var(--transition-smooth);
 }
