@@ -1,29 +1,24 @@
-from fastapi import FastAPI, HTTPException, Depends, status
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-from uuid import UUID
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-from schemas.media import *
+from database.session import engine, Base
+from database.models import media as media_models 
+from api.media import router as media_router
 
+Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Prism", description="Content Tracker", version="0.1.0")
+app = FastAPI(title="Prism")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-media_db = []
-
+app.include_router(media_router)
 
 @app.get("/")
 def root():
-    return FileResponse("app/static/dashboard.html")
-
-
-@app.post("/media")
-def create_media(media_input: MediaInput):
-    media_db.append(media_input)
-    return media_input
-
-
-@app.get("/media")
-def get_all_media():
-    return media_db
+    return {"message": "Prism Backend is running smoothly!"}
