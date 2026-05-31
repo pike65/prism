@@ -37,10 +37,13 @@ class MediaCreateRequest(MediaBase):
     pass
 
 
+class MediaUpdateRequest(MediaBase):
+    pass
+
+
 class MediaResponse(MediaBase):
     id: int
     created: datetime
-    last_edited: datetime
 
     class Config:
         from_attributes = True

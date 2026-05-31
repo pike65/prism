@@ -243,6 +243,41 @@ body {
     color: var(--brand-github);
 }
 
+/* --- DYNAMIC CHROMATIC FLUID TEXT --- */
+.dynamic-media-text {
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+    
+    /* Linear color sequence using your exact system variables */
+    background: linear-gradient(
+        90deg, 
+        var(--border-glow-1), 
+        var(--border-glow-3), 
+        var(--border-glow-2),
+        var(--border-glow-1)
+    );
+    background-size: 300% auto;
+    
+    /* Masking core properties */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Single hardware-accelerated continuous infinite shift */
+    animation: prismLiquidGlass 8s linear infinite;
+}
+
+/* Smooth, constant horizontal velocity - no jarring direction changes */
+@keyframes prismLiquidGlass {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 300% center;
+    }
+}
+
 
 /* ==========================================================================
    SIGN UP AND LOGIN (COMMON STYLES)
