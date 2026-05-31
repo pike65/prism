@@ -1,0 +1,137 @@
+/* ==========================================================================
+   404 ERROR PAGE SYSTEM (STANDALONE MODULE)
+   ========================================================================== */
+
+.error-container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--bg-primary);
+}
+
+.error-content {
+    text-align: center;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ==========================================================================
+   THE GLITCHED BROKEN PRISM ICON
+   ========================================================================== */
+
+.broken-prism {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    margin-bottom: 16px;
+    user-select: none;
+}
+
+.prism-fragment {
+    position: absolute;
+    font-size: 80px;
+    line-height: 1;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--border-glow-1), var(--border-glow-3), var(--border-glow-2));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.frag-left {
+    top: 0;
+    left: 15px;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    animation: floatLeft 4s ease-in-out infinite alternate;
+}
+
+.frag-right {
+    top: 5px;
+    left: 25px;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    opacity: 0.7;
+    filter: saturate(1.5) blur(1px);
+    animation: floatRight 4s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   ERROR TYPOGRAPHY
+   ========================================================================== */
+
+.error-code {
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -4px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.error-headline {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+}
+
+.error-subtext {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   ISOLATED NAVIGATION ANCHOR
+   ========================================================================== */
+
+.btn-error-home {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: transparent;
+    border: 4px solid var(--text-primary);
+    border-radius: 50px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 18px 30px;
+    transition: var(--transition-smooth);
+}
+
+.btn-error-home:hover {
+    color: var(--bg-primary);
+    background-color: var(--text-primary);
+    border-color: transparent;
+    transform: scale(1.02);
+    box-shadow:
+        -5px -3px 0px 1px var(--border-glow-1),
+        5px 4px 0px 1px var(--border-glow-2);
+}
+
+.btn-error-home:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   FRAGMENTED MOVEMENT ANIMATIONS
+   ========================================================================== */
+
+@keyframes floatLeft {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-8px, -4px) rotate(-3deg); }
+}
+
+@keyframes floatRight {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(10px, 6px) rotate(5deg); }
+}
