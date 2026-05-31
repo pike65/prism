@@ -1,23 +1,27 @@
 /* ==========================================================================
-   GLOBAL SYSTEM (SHARED BY ALL PAGES)
+   GLOBAL SYSTEM (PERMANENT DARK THEME CORE)
    ========================================================================== */
 
-/* --- VARS AND CONSTANTS --- */
 :root {
-    --bg-primary: #ffffff;
-    --text-primary: #0a0a0a;
-    --text-secondary: #7c7c7c;
-    --border-glow-1: #f472b6;
-    --border-glow-2: #a3e635;
-    --border-glow-3: #3b82f6;
+    --bg-primary: #0a0a0a;       
+    --text-primary: #ffffff;     
+    --text-secondary: #8e8e93;   
+    
+    --border-glow-1: #f472b6;    
+    --border-glow-2: #a3e635;    
+    --border-glow-3: #3b82f6;    
+    
     --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --brand-telegram: #229ED9;
-    --brand-github: #0a0a0a;
+    --brand-github: #ffffff;     
 }
 
-/* --- GLOBAL RESET AND CORE LAYOUTS --- */
+/* ==========================================================================
+   GLOBAL RESET AND CORE LAYOUTS
+   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +39,10 @@ body {
     flex-direction: column;
 }
 
-/* --- COMMON TYPOGRAPHY & INTERACTIVE CORE --- */
+/* ==========================================================================
+   COMMON TYPOGRAPHY & INTERACTIVE CORE
+   ========================================================================== */
+
 .gradient-underline {
     display: inline-block;
     position: relative;
@@ -53,7 +60,6 @@ body {
     z-index: -1;
 }
 
-/* Base button framework properties */
 .btn-signup, .btn-start, .btn-submit {
     display: inline-block;
     text-decoration: none;
@@ -67,7 +73,6 @@ body {
     text-align: center;
 }
 
-/* Universal geometry micro-interactions rules */
 .btn-signup:hover, .btn-start:hover, .btn-submit:hover {
     color: var(--bg-primary);
     background-color: var(--text-primary);
