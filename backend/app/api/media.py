@@ -42,9 +42,7 @@ def update_item(
     item: media_schemas.MediaUpdateRequest,
     db: Session = Depends(get_db),
 ):
-    updated_media = media_service.update_media(
-        db=db, item_id=media_id, item_data=item
-    )
+    updated_media = media_service.update_media(db=db, item_id=media_id, item_data=item)
     if not updated_media:
         raise HTTPException(status_code=404, detail="Media item not found")
     return updated_media
