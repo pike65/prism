@@ -2,7 +2,6 @@
    INDEX.HTML
    ========================================================================== */
 
-/* --- INDEX APP CONTAINER SHAPING --- */
 .app-container {
     max-width: 1440px;
     width: 100%;
@@ -13,7 +12,6 @@
     flex-direction: column;
 }
 
-/* --- INDEX APP HEADER MODULE --- */
 .app-header {
     display: flex;
     align-items: center;
@@ -74,19 +72,21 @@
     padding: 14px 28px;
 }
 
-/* --- INDEX MAIN HERO BANNER ENGINE --- */
 .app-main {
     flex: 1;
     display: flex;
+    flex-direction: row;        
     align-items: center;
+    justify-content: space-between;
+    gap: 80px;                  
     padding: 60px 0 100px 0;
 }
 
 .hero-banner {
-    max-width: 900px;
+    flex: 1.1;                  
+    max-width: 620px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 40px;
 }
 
@@ -111,9 +111,8 @@
     padding: 18px 40px;
 }
 
-/* --- INDEX APP SITE FOOTER --- */
 .app-footer {
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid #222222; 
     padding: 40px 0;
     display: flex;
     align-items: center;
@@ -121,6 +120,11 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--text-secondary);
+    transition: border-color 0.3s ease;
+}
+
+html.light-theme .app-footer {
+    border-top: 1px solid #eaeaea;
 }
 
 .footer-left {
@@ -158,7 +162,6 @@
     color: var(--brand-github);
 }
 
-/* --- DYNAMIC CHROMATIC FLUID TEXT --- */
 .dynamic-media-text {
     display: inline-block;
     font-weight: 700;
@@ -186,5 +189,75 @@
     }
     100% {
         background-position: 300% center;
+    }
+}
+
+/* ==========================================================================
+   VISUAL PREVIEW AND ABSTRACT CANVAS
+   ========================================================================== */
+
+.hero-preview-wrapper {
+    flex: 0.9;                  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.video-placeholder {
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 16 / 10;      
+    background-color: #121212;  
+    border: 4px solid var(--text-primary);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 12px 12px 0px var(--border-glow-3);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-placeholder:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 16px 16px 0px var(--border-glow-1);
+}
+
+.gradient-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        125deg,
+        var(--border-glow-1) 0%,
+        #121212 40%,
+        var(--border-glow-3) 60%,
+        var(--border-glow-2) 100%
+    );
+    background-size: 300% 300%;
+    animation: abstractMorph 12s ease infinite alternate;
+}
+
+html.light-theme .gradient-canvas {
+    background: linear-gradient(
+        125deg,
+        var(--border-glow-1) 0%,
+        #f5f5f7 40%,
+        var(--border-glow-3) 60%,
+        var(--border-glow-2) 100%
+    );
+    background-size: 300% 300%;
+}
+
+@keyframes abstractMorph {
+    0% {
+        background-position: 0% 8%;
+    }
+    50% {
+        background-position: 100% 93%;
+    }
+    100% {
+        background-position: 30% 20%;
     }
 }
