@@ -1,0 +1,190 @@
+/* ==========================================================================
+   INDEX.HTML
+   ========================================================================== */
+
+/* --- INDEX APP CONTAINER SHAPING --- */
+.app-container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 120px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- INDEX APP HEADER MODULE --- */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.brand-logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-icon {
+    font-size: 40px;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    display: inline-block;
+    user-select: none;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-logo::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--border-glow-1), var(--border-glow-2));
+    filter: blur(20px);
+    opacity: 0.15;
+    transition: var(--transition-smooth);
+    z-index: 1;
+}
+
+.brand-logo:hover::before {
+    opacity: 0.4;
+    filter: blur(15px);
+}
+
+.brand-logo:hover .logo-icon {
+    transform: rotate(180deg) scale(1.1);
+    background: linear-gradient(135deg, var(--border-glow-1), var(--border-glow-3), var(--border-glow-2));
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-signup {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 28px;
+}
+
+/* --- INDEX MAIN HERO BANNER ENGINE --- */
+.app-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 60px 0 100px 0;
+}
+
+.hero-banner {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.hero-headline {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+}
+
+.hero-subtext {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+}
+
+.btn-start {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+}
+
+/* --- INDEX APP SITE FOOTER --- */
+.app-footer {
+    border-top: 1px solid #eaeaea;
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-brand {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 24px;
+    transition: var(--transition-smooth);
+}
+
+.tg-icon:hover {
+    color: var(--brand-telegram);
+}
+
+.gh-icon:hover {
+    color: var(--brand-github);
+}
+
+/* --- DYNAMIC CHROMATIC FLUID TEXT --- */
+.dynamic-media-text {
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+    
+    background: linear-gradient(
+        90deg, 
+        var(--border-glow-1), 
+        var(--border-glow-3), 
+        var(--border-glow-2),
+        var(--border-glow-1)
+    );
+    background-size: 300% auto;
+    
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: prismLiquidGlass 8s linear infinite;
+}
+
+@keyframes prismLiquidGlass {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 300% center;
+    }
+}
