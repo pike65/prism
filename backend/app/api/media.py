@@ -8,7 +8,7 @@ from schemas import media as media_schemas
 from services import media as media_service
 
 
-router = APIRouter(prefix="/media", tags=["media"])
+router = APIRouter(prefix="api/media", tags=["media"])
 
 
 # ============================================================
