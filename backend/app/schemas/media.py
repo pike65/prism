@@ -44,6 +44,7 @@ class MediaUpdateRequest(MediaBase):
 class MediaResponse(MediaBase):
     id: int
     created: datetime
+    last_edited: datetime
 
     class Config:
         from_attributes = True

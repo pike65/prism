@@ -8,7 +8,7 @@ from schemas import media as media_schemas
 from services import media as media_service
 
 
-router = APIRouter(prefix="api/media", tags=["media"])
+router = APIRouter(prefix="/api/media", tags=["media"])
 
 
 # ============================================================
@@ -44,7 +44,7 @@ def update_item(
 ):
     updated_media = media_service.update_media(db=db, item_id=media_id, item_data=item)
     if not updated_media:
-        raise HTTPException(status_code=404, detail="Media item not found")
+        raise HTTPException(status_code=404, detail="Media not found")
     return updated_media
 
 
@@ -54,6 +54,6 @@ def delete_item(
 ):
     success = media_service.delete_media(db=db, item_id=media_id)
     if not success:
-        raise HTTPException(status_code=404, detail="Media item not found")
+        raise HTTPException(status_code=404, detail="Media iem not found")
 
     return None
