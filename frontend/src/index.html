@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prism</title>
-    
+
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
@@ -23,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="app-container">
@@ -43,13 +45,14 @@
                     A single storage for all your watched <span class="dynamic-media-text">media</span>.
                 </h1>
                 <p class="hero-subtext">
-                    Service for storing, filtering, indexing your personal data base of watched films, shows, series, anime, cartoons, and other content. Forget about inconvenient notebooks and bim boms.
+                    Service for storing, filtering, indexing your personal data base of watched films, shows, series,
+                    anime, cartoons, and other content. Forget about inconvenient notebooks and bim boms.
                 </p>
                 <a href="#" class="btn-start">Start tracking</a>
             </section>
 
             <div class="hero-preview-wrapper">
-                 <div class="video-placeholder">
+                <div class="video-placeholder">
                     <div class="gradient-canvas"></div>
                 </div>
             </div>
@@ -62,16 +65,60 @@
                 <span>Built by pike65.</span>
             </div>
             <div class="footer-socials">
-                <a href="https://t.me/nimvelt" class="icon-link tg-icon" target="_blank" rel="noopener noreferrer" title="Telegram Channel">
+                <a href="https://t.me/nimvelt" class="icon-link tg-icon" target="_blank" rel="noopener noreferrer"
+                    title="Telegram Channel">
                     <i class="fa-brands fa-telegram"></i>
                 </a>
-                <a href="https://github.com/pike65" class="icon-link gh-icon" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                <a href="https://github.com/pike65" class="icon-link gh-icon" target="_blank" rel="noopener noreferrer"
+                    title="GitHub Repository">
                     <i class="fa-brands fa-github"></i>
                 </a>
             </div>
         </footer>
     </div>
-    
+
+    <div class="modal-backdrop" id="authModal" aria-hidden="true">
+        <div class="modal-window">
+            <button class="modal-close" id="closeModalBtn" aria-label="Close window">&times;</button>
+
+            <h3 class="modal-headline">Authentication Required</h3>
+
+            <p class="modal-text">
+                To start tracking your media library, organizing data assets, and saving custom layouts, you need to
+                authenticate your workspace profile.
+            </p>
+
+            <div class="modal-actions">
+                <a href="views/auth/signup.html" class="modal-btn btn-primary-alt">Create Account</a>
+                <a href="views/auth/login.html" class="modal-btn btn-secondary-alt">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.querySelector('.btn-start');
+        const authModal = document.getElementById('authModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        if (startBtn && authModal && closeModalBtn) {
+            startBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                authModal.classList.add('active');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                authModal.classList.remove('active');
+            });
+
+            // Closes window if user clicks anywhere outside the content box
+            authModal.addEventListener('click', (e) => {
+                if (e.target === authModal) {
+                    authModal.classList.remove('active');
+                }
+            });
+        }
+    </script>
     <script src="https://kit.fontawesome.com/dea413ac19.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

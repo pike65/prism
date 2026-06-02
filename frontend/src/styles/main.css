@@ -261,3 +261,159 @@ html.light-theme .gradient-canvas {
         background-position: 30% 20%;
     }
 }
+
+/* ==========================================================================
+   INTERACTIVE POP-UP MODAL FRAMEWORK
+   ========================================================================== */
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(8, 8, 12, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window {
+    background-color: #0d0d11;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    max-width: 460px;
+    width: 100%;
+    padding: 44px;
+    position: relative;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        -8px -6px 30px -5px rgba(var(--border-glow-1-rgb), 0.25),
+        8px 8px 30px -5px rgba(var(--border-glow-2-rgb), 0.3),
+        12px 16px 0px var(--border-glow-1);
+    transform: scale(0.92) translateY(10px);
+    transition: 
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.4s ease;
+}
+
+.modal-backdrop.active .modal-window {
+    transform: scale(1) translateY(0);
+}
+
+.modal-window:hover {
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        -12px -10px 40px -5px rgba(var(--border-glow-1-rgb), 0.35),
+        12px 12px 40px -5px rgba(var(--border-glow-2-rgb), 0.4),
+        18px 22px 0px var(--border-glow-3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+    transition: var(--transition-smooth);
+}
+
+.modal-close:hover {
+    color: #ffffff;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.modal-headline {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.modal-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.modal-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 
+        background-color 0.3s ease, 
+        color 0.3s ease, 
+        border-color 0.3s ease, 
+        box-shadow 0.3s ease, 
+        transform 0.2s ease;
+}
+
+.btn-primary-alt {
+    color: var(--bg-primary);
+    background-color: var(--text-primary);
+    border: 3px solid var(--text-primary);
+}
+
+.btn-primary-alt:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 10px 20px -10px rgba(255, 255, 255, 0.3),
+        -4px -3px 0px 0px var(--border-glow-1),
+        4px 3px 0px 0px var(--border-glow-2);
+}
+
+.btn-secondary-alt {
+    color: var(--text-primary);
+    background-color: transparent;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary-alt:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: translateY(-2px);
+    box-shadow:
+        -6px -4px 0px 0px var(--border-glow-3),
+        6px 5px 0px 0px var(--border-glow-2);
+}
+
+.modal-btn:active {
+    transform: translateY(1px) scale(0.99);
+}
