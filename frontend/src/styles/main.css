@@ -389,8 +389,6 @@ html.light-theme .gradient-canvas {
 }
 
 .btn-primary-alt:hover {
-    background-color: transparent;
-    color: var(--text-primary);
     transform: translateY(-2px);
     box-shadow: 
         0 10px 20px -10px rgba(255, 255, 255, 0.3),
