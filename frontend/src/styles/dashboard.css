@@ -1,0 +1,341 @@
+/* ==========================================================================
+   PRISM COMPACT DASHBOARD ENGINE MATRIX
+   ========================================================================== */
+
+.dash-workspace.theme-dark {
+    --dash-bg: #0a0a0a;
+    --dash-text: #ffffff;
+    --dash-text-muted: #8e8e93;
+    --dash-border: #ffffff;
+    --dash-surface: #121212;
+    --dash-tag: #222222;
+}
+
+.dash-workspace.theme-light {
+    --dash-bg: #ffffff;
+    --dash-text: #000000;
+    --dash-text-muted: #666666;
+    --dash-border: #000000;
+    --dash-surface: #f5f5f7;
+    --dash-tag: #e5e5ea;
+}
+
+.dashboard-body {
+    background-color: transparent !important;
+}
+
+.dash-workspace {
+    background-color: var(--dash-bg);
+    color: var(--dash-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+.dash-workspace .logo-icon,
+.dash-workspace .footer-brand,
+.dash-workspace .btn-signup {
+    color: var(--dash-text) !important;
+    border-color: var(--dash-text) !important;
+}
+
+.dash-workspace .btn-signup:hover {
+    color: var(--dash-bg) !important;
+    background-color: var(--dash-text) !important;
+}
+
+.dash-main {
+    flex: 1;
+    width: 100%;
+    padding: 20px 0 80px 0;
+    display: block;
+}
+
+.dash-content-container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 120px;
+}
+
+/* ==========================================================================
+   COMPACT HORIZONTAL CONTROL BAR COMPONENT
+   ========================================================================== */
+
+.table-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.control-group {
+    position: relative;
+    height: 42px;
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-text-muted);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+}
+
+.control-group:hover, .control-group:focus-within {
+    border-color: var(--dash-border);
+}
+
+.search-block {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.search-icon {
+    color: var(--dash-text-muted);
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-main);
+    color: var(--dash-text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.burger-block {
+    flex: 1;
+    min-width: 130px;
+}
+
+.burger-select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 32px 0 12px;
+    font-family: var(--font-main);
+    color: var(--dash-text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.burger-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--dash-text-muted);
+    font-size: 10px;
+}
+
+.add-media-btn {
+    height: 42px;
+    padding: 0 20px;
+    background-color: var(--dash-text);
+    color: var(--dash-bg);
+    border: 1px solid var(--dash-border);
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--border-glow-3);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.add-media-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px var(--border-glow-1);
+}
+
+.add-media-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--dash-border);
+}
+
+/* ==========================================================================
+   CLASSICAL HARD-GRID SEAMLESS DATA FRAMEWORK
+   ========================================================================== */
+
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--dash-surface);
+    border: 1px solid var(--dash-text-muted);
+    font-family: var(--font-main);
+}
+
+.matrix-table th,
+.matrix-table td {
+    border: 1px solid var(--dash-text-muted);
+    padding: 12px 16px;
+    font-size: 14px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.matrix-table th {
+    background-color: rgba(255, 255, 255, 0.01);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--dash-text-muted);
+    user-select: none;
+}
+
+.col-n { width: 50px; text-align: center; }
+.col-title { width: auto; min-width: 200px; }
+.col-genres { width: 25%; }
+.col-date { width: 120px; }
+.col-rating { width: 95px; }
+.col-action { width: 65px; text-align: center; }
+
+.cell-bold { font-weight: 600; color: var(--dash-text); }
+.cell-muted { color: var(--dash-text-muted); font-weight: 500; }
+.text-center { text-align: center; }
+
+.matrix-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background-color: var(--dash-tag);
+    color: var(--dash-text);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.star-accent {
+    color: var(--border-glow-2);
+}
+
+.row-btn {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px;
+    color: var(--dash-text-muted);
+}
+
+.row-btn:hover {
+    color: var(--dash-text);
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   MINIMAL COMPACT SYSTEM ICON ENGINE (THEME SWITCHER BLOCK)
+   ========================================================================== */
+
+.theme-icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-right: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.icon-engine {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.icon-engine .moon-icon,
+.icon-engine .sun-icon {
+    position: absolute;
+    font-size: 22px;
+    /* Soft, elastic overshoot transition instead of basic linear rotation */
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease, color 0.25s ease;
+}
+
+/* Base states inside Dark Theme: Sun is fully dropped and hidden below */
+.dash-workspace.theme-dark .sun-icon {
+    opacity: 0;
+    transform: translateY(14px) scale(0.4);
+}
+
+.dash-workspace.theme-dark .moon-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Hover effects inside Dark Theme: Moon lifts up out of view, Sun floats into place from below */
+.dash-workspace.theme-dark .theme-icon-btn:hover .icon-engine {
+    color: var(--border-glow-2);
+}
+
+.dash-workspace.theme-dark .theme-icon-btn:hover .moon-icon {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.4);
+}
+
+.dash-workspace.theme-dark .theme-icon-btn:hover .sun-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(45deg);
+}
+
+/* Base states inside Light Theme: Moon is fully dropped and hidden below */
+.dash-workspace.theme-light .sun-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    color: #ffb703;
+}
+
+.dash-workspace.theme-light .moon-icon {
+    opacity: 0;
+    transform: translateY(14px) scale(0.4);
+}
+
+/* Hover effects inside Light Theme: Sun lifts up out of view, Moon floats into place from below */
+.dash-workspace.theme-light .theme-icon-btn:hover .icon-engine {
+    color: var(--border-glow-3);
+}
+
+.dash-workspace.theme-light .theme-icon-btn:hover .sun-icon {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.4) rotate(45deg);
+}
+
+.dash-workspace.theme-light .theme-icon-btn:hover .moon-icon {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    color: var(--dash-text);
+}
+
+.theme-icon-btn:active .icon-engine {
+    transform: scale(0.85);
+}
+
+

@@ -17,11 +17,6 @@ class MediaBase(BaseModel):
     genre: Annotated[
         str, Field(..., max_length=32), AfterValidator(utils.title_and_strip)
     ]
-    review: Annotated[
-        str | None,
-        Field(None, max_length=1000),
-        AfterValidator(utils.clean_optional_text),
-    ] = None
     rating: Annotated[float, Field(ge=0, le=10), AfterValidator(utils.round_rating)]
     type: Literal[
         "Movie",
@@ -34,7 +29,7 @@ class MediaBase(BaseModel):
 
 
 class MediaCreateRequest(MediaBase):
-    pass
+    review: Annotated[set[str] | None, Field(...)] = None
 
 
 class MediaUpdateRequest(MediaBase):
