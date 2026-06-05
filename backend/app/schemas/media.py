@@ -29,7 +29,7 @@ class MediaBase(BaseModel):
 
 
 class MediaCreateRequest(MediaBase):
-    review: Annotated[set[str] | None, Field(...)] = None
+    review: Annotated[str, Field(..., max_length=1000)]
 
 
 class MediaUpdateRequest(MediaBase):

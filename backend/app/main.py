@@ -13,12 +13,6 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Prism")
 
-app.mount(
-    "/styles", 
-    StaticFiles(directory=Path(__file__).parent.parent.parent / "frontend" / "src" / "styles"), 
-    name="styles"
-)
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,9 +24,6 @@ app.add_middleware(
 app.include_router(media_router)
 
 
-@app.get("/", response_class=HTMLResponse)
-def get_dashboard():
-    html_path = Path(__file__).parent.parent.parent / "frontend" / "src" / "dashboard.html"
-    
-    with open(html_path, "r", encoding="utf-8") as file:
-        return file.read()
+@app.get("/")
+def root():
+    return {"system": "on"}
