@@ -11,11 +11,6 @@ from services import media as media_service
 router = APIRouter(prefix="/api/media", tags=["media"])
 
 
-# ============================================================
-# MEDIA ROUTES
-# ============================================================
-
-
 @router.post(
     "/", status_code=status.HTTP_201_CREATED, response_model=media_schemas.MediaResponse
 )
@@ -55,5 +50,4 @@ def delete_item(
     success = media_service.delete_media(db=db, item_id=media_id)
     if not success:
         raise HTTPException(status_code=404, detail="Media iem not found")
-
     return None

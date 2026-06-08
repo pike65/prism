@@ -2,24 +2,21 @@ from sqlalchemy.orm import Session
 
 from database.models.media import Media
 from schemas import media as media_schemas
-
-
-# ============================================================
-# MEDIA SERVICES
-# ============================================================
-
-
-def add_new_media(db: Session, item_data: media_schemas.MediaInput):
-    db_item = Media(**item_data.model_dump())
-
-    db.add(db_item)
-    db.commit()
-    db.refresh(db_item)
-    return db_item
+from services.context import transaction_scope
 
 
 def get_all_media(db: Session):
     return db.query(Media).all()
+
+
+def add_new_media(db: Session, item_data: media_schemas.MediaCreateRequest):
+    db_item = Media(**item_data.model_dump())
+
+    with transaction_scope(db):
+        db.add(db_item)
+
+    db.refresh(db_item)
+    return db_item
 
 
 def update_media(
@@ -30,11 +27,12 @@ def update_media(
         return None
 
     update_data = item_data.model_dump(exclude_unset=True)
-
     for key, value in update_data.items():
         setattr(db_item, key, value)
 
-    db.commit()
+    with transaction_scope(db):
+        pass
+
     db.refresh(db_item)
     return db_item
 
@@ -44,6 +42,7 @@ def delete_media(db: Session, item_id: int):
     if not db_item:
         return False
 
-    db.delete(db_item)
-    db.commit()
+    with transaction_scope(db):
+        db.delete(db_item)
+
     return True
