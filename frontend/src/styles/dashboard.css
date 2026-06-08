@@ -1,23 +1,14 @@
 /* ==========================================================================
-   PRISM COMPACT DASHBOARD ENGINE MATRIX
+   PRISM COMPACT DASHBOARD ENGINE MATRIX (PERMANENT LIGHT ESSENCE)
    ========================================================================== */
 
-.dash-workspace.theme-dark {
-    --dash-bg: #0a0a0a;
-    --dash-text: #ffffff;
-    --dash-text-muted: #8e8e93;
-    --dash-border: #ffffff;
-    --dash-surface: #121212;
-    --dash-tag: #222222;
-}
-
-.dash-workspace.theme-light {
+:root {
     --dash-bg: #ffffff;
     --dash-text: #000000;
     --dash-text-muted: #666666;
     --dash-border: #000000;
-    --dash-surface: #f5f5f7;
-    --dash-tag: #e5e5ea;
+    --dash-surface: #fbfbfe;
+    --dash-tag: #eeeeee;
 }
 
 .dashboard-body {
@@ -30,7 +21,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
 }
 
 .dash-workspace .logo-icon,
@@ -80,7 +70,8 @@
     transition: border-color 0.2s ease;
 }
 
-.control-group:hover, .control-group:focus-within {
+.control-group:hover,
+.control-group:focus-within {
     border-color: var(--dash-border);
 }
 
@@ -141,28 +132,49 @@
 }
 
 .add-media-btn {
+
     height: 42px;
+
     padding: 0 20px;
+
     background-color: var(--dash-text);
+
     color: var(--dash-bg);
+
     border: 1px solid var(--dash-border);
+
     border-radius: 8px;
+
     font-family: var(--font-main);
+
     font-size: 13px;
+
     font-weight: 700;
+
     cursor: pointer;
+
     box-shadow: 4px 4px 0px var(--border-glow-3);
+
     transition: transform 0.1s ease, box-shadow 0.1s ease;
+
 }
+
 
 .add-media-btn:hover {
+
     transform: translate(-1px, -1px);
+
     box-shadow: 5px 5px 0px var(--border-glow-1);
+
 }
 
+
 .add-media-btn:active {
+
     transform: translate(1px, 1px);
+
     box-shadow: 2px 2px 0px var(--dash-border);
+
 }
 
 /* ==========================================================================
@@ -192,7 +204,7 @@
 }
 
 .matrix-table th {
-    background-color: rgba(255, 255, 255, 0.01);
+    background-color: rgba(0, 0, 0, 0.02);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 11px;
@@ -201,16 +213,46 @@
     user-select: none;
 }
 
-.col-n { width: 50px; text-align: center; }
-.col-title { width: auto; min-width: 200px; }
-.col-genres { width: 25%; }
-.col-date { width: 120px; }
-.col-rating { width: 95px; }
-.col-action { width: 65px; text-align: center; }
+.col-n {
+    width: 50px;
+    text-align: center;
+}
 
-.cell-bold { font-weight: 600; color: var(--dash-text); }
-.cell-muted { color: var(--dash-text-muted); font-weight: 500; }
-.text-center { text-align: center; }
+.col-title {
+    width: auto;
+    min-width: 200px;
+}
+
+.col-genres {
+    width: 25%;
+}
+
+.col-date {
+    width: 120px;
+}
+
+.col-rating {
+    width: 95px;
+}
+
+.col-action {
+    width: 65px;
+    text-align: center;
+}
+
+.cell-bold {
+    font-weight: 600;
+    color: var(--dash-text);
+}
+
+.cell-muted {
+    color: var(--dash-text-muted);
+    font-weight: 500;
+}
+
+.text-center {
+    text-align: center;
+}
 
 .matrix-tag {
     display: inline-block;
@@ -221,11 +263,11 @@
     font-size: 11px;
     font-weight: 600;
     margin: 1px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .star-accent {
-    color: var(--border-glow-2);
+    color: var(--dash-text);
 }
 
 .row-btn {
@@ -244,98 +286,3 @@
 .delete-btn:hover {
     color: #ef4444;
 }
-
-/* ==========================================================================
-   MINIMAL COMPACT SYSTEM ICON ENGINE (THEME SWITCHER BLOCK)
-   ========================================================================== */
-
-.theme-icon-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    margin-right: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.icon-engine {
-    position: relative;
-    width: 26px;
-    height: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-}
-
-.icon-engine .moon-icon,
-.icon-engine .sun-icon {
-    position: absolute;
-    font-size: 22px;
-    /* Soft, elastic overshoot transition instead of basic linear rotation */
-    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease, color 0.25s ease;
-}
-
-/* Base states inside Dark Theme: Sun is fully dropped and hidden below */
-.dash-workspace.theme-dark .sun-icon {
-    opacity: 0;
-    transform: translateY(14px) scale(0.4);
-}
-
-.dash-workspace.theme-dark .moon-icon {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* Hover effects inside Dark Theme: Moon lifts up out of view, Sun floats into place from below */
-.dash-workspace.theme-dark .theme-icon-btn:hover .icon-engine {
-    color: var(--border-glow-2);
-}
-
-.dash-workspace.theme-dark .theme-icon-btn:hover .moon-icon {
-    opacity: 0;
-    transform: translateY(-14px) scale(0.4);
-}
-
-.dash-workspace.theme-dark .theme-icon-btn:hover .sun-icon {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotate(45deg);
-}
-
-/* Base states inside Light Theme: Moon is fully dropped and hidden below */
-.dash-workspace.theme-light .sun-icon {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    color: #ffb703;
-}
-
-.dash-workspace.theme-light .moon-icon {
-    opacity: 0;
-    transform: translateY(14px) scale(0.4);
-}
-
-/* Hover effects inside Light Theme: Sun lifts up out of view, Moon floats into place from below */
-.dash-workspace.theme-light .theme-icon-btn:hover .icon-engine {
-    color: var(--border-glow-3);
-}
-
-.dash-workspace.theme-light .theme-icon-btn:hover .sun-icon {
-    opacity: 0;
-    transform: translateY(-14px) scale(0.4) rotate(45deg);
-}
-
-.dash-workspace.theme-light .theme-icon-btn:hover .moon-icon {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    color: var(--dash-text);
-}
-
-.theme-icon-btn:active .icon-engine {
-    transform: scale(0.85);
-}
-
-

@@ -9,17 +9,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dashboard.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-        <defs>
-            <linearGradient id='prism-grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'>
-                <stop offset='0%25' style='stop-color:%23f472b6;stop-opacity:1' />
-                <stop offset='50%25' style='stop-color:%233b82f6;stop-opacity:1' />
-                <stop offset='100%25' style='stop-color:%23a3e635;stop-opacity:1' />
-            </linearGradient>
-        </defs>
-        <polygon points='50 15, 15 80, 85 80' fill='url(%23prism-grad)' />
-    </svg>">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +18,7 @@
 
 <body class="dashboard-body">
 
-    <div class="dash-workspace theme-dark" id="dashboardWorkspace">
+    <div class="dash-workspace" id="dashboardWorkspace">
 
         <div class="app-container">
             <header class="app-header">
@@ -38,12 +28,6 @@
                     </a>
                 </div>
                 <nav class="nav-actions">
-                    <button class="theme-icon-btn" id="themeToggleBtn" title="Toggle Theme">
-                        <div class="icon-engine">
-                            <i class="fa-solid fa-moon moon-icon"></i>
-                            <i class="fa-solid fa-sun sun-icon"></i>
-                        </div>
-                    </button>
                     <a href="#" class="btn-signup">Sign-Up</a>
                 </nav>
             </header>
@@ -110,16 +94,13 @@
                                 <td class="cell-muted">2026-06-02</td>
                                 <td class="cell-bold"><i class="fa-solid fa-star star-accent"></i> 9.2</td>
                                 <td class="text-center">
-                                    <button class="row-btn view-btn" title="View details"><i
-                                            class="fa-solid fa-eye"></i></button>
+                                    <button class="row-btn view-btn" title="View details"><i class="fa-solid fa-eye"></i></button>
                                 </td>
                                 <td class="text-center">
-                                    <button class="row-btn edit-btn" title="Edit entry"><i
-                                            class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="row-btn edit-btn" title="Edit entry"><i class="fa-solid fa-pen-to-square"></i></button>
                                 </td>
                                 <td class="text-center">
-                                    <button class="row-btn delete-btn" title="Delete entry"><i
-                                            class="fa-solid fa-trash"></i></button>
+                                    <button class="row-btn delete-btn" title="Delete entry"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -137,8 +118,7 @@
                     <a href="https://t.me/nimvelt" class="icon-link tg-icon" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-telegram"></i>
                     </a>
-                    <a href="https://github.com/pike65" class="icon-link gh-icon" target="_blank"
-                        rel="noopener noreferrer">
+                    <a href="https://github.com/pike65" class="icon-link gh-icon" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-github"></i>
                     </a>
                 </div>
@@ -148,22 +128,6 @@
     </div>
 
     <script src="https://kit.fontawesome.com/dea413ac19.js" crossorigin="anonymous"></script>
-    <script>
-        const themeBtn = document.getElementById('themeToggleBtn');
-        const workspace = document.getElementById('dashboardWorkspace');
-
-        if (themeBtn && workspace) {
-            themeBtn.addEventListener('click', () => {
-                if (workspace.classList.contains('theme-dark')) {
-                    workspace.classList.remove('theme-dark');
-                    workspace.classList.add('theme-light');
-                } else {
-                    workspace.classList.remove('theme-light');
-                    workspace.classList.add('theme-dark');
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
