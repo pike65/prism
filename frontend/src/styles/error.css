@@ -127,11 +127,21 @@
    ========================================================================== */
 
 @keyframes floatLeft {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(-8px, -4px) rotate(-3deg); }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-8px, -4px) rotate(-3deg);
+    }
 }
 
 @keyframes floatRight {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(10px, 6px) rotate(5deg); }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(10px, 6px) rotate(5deg);
+    }
 }

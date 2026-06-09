@@ -132,49 +132,28 @@
 }
 
 .add-media-btn {
-
     height: 42px;
-
     padding: 0 20px;
-
     background-color: var(--dash-text);
-
     color: var(--dash-bg);
-
     border: 1px solid var(--dash-border);
-
     border-radius: 8px;
-
     font-family: var(--font-main);
-
     font-size: 13px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     box-shadow: 4px 4px 0px var(--border-glow-3);
-
     transition: transform 0.1s ease, box-shadow 0.1s ease;
-
 }
-
 
 .add-media-btn:hover {
-
     transform: translate(-1px, -1px);
-
     box-shadow: 5px 5px 0px var(--border-glow-1);
-
 }
 
-
 .add-media-btn:active {
-
     transform: translate(1px, 1px);
-
     box-shadow: 2px 2px 0px var(--dash-border);
-
 }
 
 /* ==========================================================================

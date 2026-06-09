@@ -75,15 +75,15 @@
 .app-main {
     flex: 1;
     display: flex;
-    flex-direction: row;        
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 80px;                  
+    gap: 80px;
     padding: 60px 0 100px 0;
 }
 
 .hero-banner {
-    flex: 1.1;                  
+    flex: 1.1;
     max-width: 620px;
     display: flex;
     flex-direction: column;
@@ -112,7 +112,7 @@
 }
 
 .app-footer {
-    border-top: 1px solid #222222; 
+    border-top: 1px solid #222222;
     padding: 40px 0;
     display: flex;
     align-items: center;
@@ -166,20 +166,18 @@ html.light-theme .app-footer {
     display: inline-block;
     font-weight: 700;
     position: relative;
-    
-    background: linear-gradient(
-        90deg, 
-        var(--border-glow-1), 
-        var(--border-glow-3), 
-        var(--border-glow-2),
-        var(--border-glow-1)
-    );
+
+    background: linear-gradient(90deg,
+            var(--border-glow-1),
+            var(--border-glow-3),
+            var(--border-glow-2),
+            var(--border-glow-1));
     background-size: 300% auto;
-    
+
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+
     animation: prismLiquidGlass 8s linear infinite;
 }
 
@@ -187,6 +185,7 @@ html.light-theme .app-footer {
     0% {
         background-position: 0% center;
     }
+
     100% {
         background-position: 300% center;
     }
@@ -197,7 +196,7 @@ html.light-theme .app-footer {
    ========================================================================== */
 
 .hero-preview-wrapper {
-    flex: 0.9;                  
+    flex: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,12 +206,12 @@ html.light-theme .app-footer {
 .video-placeholder {
     width: 100%;
     max-width: 580px;
-    aspect-ratio: 16 / 10;      
-    background-color: #121212;  
+    aspect-ratio: 16 / 10;
+    background-color: #121212;
     border: 4px solid var(--text-primary);
     border-radius: 20px;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: 12px 12px 0px var(--border-glow-3);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -228,25 +227,21 @@ html.light-theme .app-footer {
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(
-        125deg,
-        var(--border-glow-1) 0%,
-        #121212 40%,
-        var(--border-glow-3) 60%,
-        var(--border-glow-2) 100%
-    );
+    background: linear-gradient(125deg,
+            var(--border-glow-1) 0%,
+            #121212 40%,
+            var(--border-glow-3) 60%,
+            var(--border-glow-2) 100%);
     background-size: 300% 300%;
     animation: abstractMorph 12s ease infinite alternate;
 }
 
 html.light-theme .gradient-canvas {
-    background: linear-gradient(
-        125deg,
-        var(--border-glow-1) 0%,
-        #f5f5f7 40%,
-        var(--border-glow-3) 60%,
-        var(--border-glow-2) 100%
-    );
+    background: linear-gradient(125deg,
+            var(--border-glow-1) 0%,
+            #f5f5f7 40%,
+            var(--border-glow-3) 60%,
+            var(--border-glow-2) 100%);
     background-size: 300% 300%;
 }
 
@@ -254,9 +249,11 @@ html.light-theme .gradient-canvas {
     0% {
         background-position: 0% 8%;
     }
+
     50% {
         background-position: 100% 93%;
     }
+
     100% {
         background-position: 30% 20%;
     }
@@ -298,13 +295,13 @@ html.light-theme .gradient-canvas {
     width: 100%;
     padding: 44px;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.05),
         -8px -6px 30px -5px rgba(var(--border-glow-1-rgb), 0.25),
         8px 8px 30px -5px rgba(var(--border-glow-2-rgb), 0.3),
         12px 16px 0px var(--border-glow-1);
     transform: scale(0.92) translateY(10px);
-    transition: 
+    transition:
         transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
         box-shadow 0.4s ease;
 }
@@ -314,7 +311,7 @@ html.light-theme .gradient-canvas {
 }
 
 .modal-window:hover {
-    box-shadow: 
+    box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.1),
         -12px -10px 40px -5px rgba(var(--border-glow-1-rgb), 0.35),
         12px 12px 40px -5px rgba(var(--border-glow-2-rgb), 0.4),
@@ -374,11 +371,11 @@ html.light-theme .gradient-canvas {
     padding: 16px;
     border-radius: 50px;
     cursor: pointer;
-    transition: 
-        background-color 0.3s ease, 
-        color 0.3s ease, 
-        border-color 0.3s ease, 
-        box-shadow 0.3s ease, 
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
         transform 0.2s ease;
 }
 
@@ -390,7 +387,7 @@ html.light-theme .gradient-canvas {
 
 .btn-primary-alt:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
         0 10px 20px -10px rgba(255, 255, 255, 0.3),
         -4px -3px 0px 0px var(--border-glow-1),
         4px 3px 0px 0px var(--border-glow-2);
