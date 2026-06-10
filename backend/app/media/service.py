@@ -1,30 +1,23 @@
-from contextlib import contextmanager
 from sqlalchemy.orm import Session
+
 
 from .models import Media
 from . import schemas
-
-
-@contextmanager
-def transaction_scope(db: Session):
-    try:
-        yield db
-        db.commit()
-    except Exception as e:
-        db.rollback()
-        raise e
 
 
 def get_all_media(db: Session):
     return db.query(Media).all()
 
 
+def get_media_by_id(db: Session, item_id: int):
+    return db.query(Media).filter(Media.id == item_id).first()
+
+
 def add_new_media(db: Session, item_data: schemas.MediaCreateRequest):
     db_item = Media(**item_data.model_dump())
 
-    with transaction_scope(db):
-        db.add(db_item)
-
+    db.add(db_item)
+    db.commit()
     db.refresh(db_item)
     return db_item
 
@@ -38,9 +31,8 @@ def update_media(db: Session, item_id: int, item_data: schemas.MediaUpdateReques
     for key, value in update_data.items():
         setattr(db_item, key, value)
 
-    with transaction_scope(db):
-        db.add(db_item)
-
+    db.add(db_item)
+    db.commit()
     db.refresh(db_item)
     return db_item
 
@@ -50,7 +42,6 @@ def delete_media(db: Session, item_id: int):
     if not db_item:
         return False
 
-    with transaction_scope(db):
-        db.delete(db_item)
-
+    db.delete(db_item)
+    db.commit()
     return True

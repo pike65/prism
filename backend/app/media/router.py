@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Path
 from sqlalchemy.orm import Session
-from pydantic import Field
 from typing import List, Annotated
-
 
 from database.session import get_db
 from . import schemas, service
@@ -25,11 +23,26 @@ def get_all_items(db: Session = Depends(get_db)):
     return service.get_all_media(db=db)
 
 
+@router.get(
+    "/{media_id}", status_code=status.HTTP_200_OK, response_model=schemas.MediaResponse
+)
+def get_item(
+    media_id: Annotated[int, Path(..., ge=1, description="The ID of the media item")],
+    db: Session = Depends(get_db),
+):
+    db_item = service.get_media_by_id(db=db, item_id=media_id)
+    if not db_item:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Media not found"
+        )
+    return db_item
+
+
 @router.patch(
     "/{media_id}", status_code=status.HTTP_200_OK, response_model=schemas.MediaResponse
 )
 def update_item(
-    media_id: Annotated[int, Field(..., ge=1)],
+    media_id: Annotated[int, Path(..., ge=1)],
     item: schemas.MediaUpdateRequest,
     db: Session = Depends(get_db),
 ):
@@ -43,7 +56,7 @@ def update_item(
 
 @router.delete("/{media_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_item(
-    media_id: Annotated[int, Field(..., ge=1)], db: Session = Depends(get_db)
+    media_id: Annotated[int, Path(..., ge=1)], db: Session = Depends(get_db)
 ):
     success = service.delete_media(db=db, item_id=media_id)
     if not success:
