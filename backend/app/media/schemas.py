@@ -2,7 +2,8 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, Field, AfterValidator
 from datetime import datetime
 
-from schemas import utils
+
+from . import utils
 
 
 class MediaBase(BaseModel):
@@ -28,17 +29,28 @@ class MediaCreateRequest(MediaBase):
 
 
 class MediaUpdateRequest(BaseModel):
-    title: Annotated[str, Field(max_length=32), AfterValidator(utils.title_and_strip)] | None = None
-    genre: Annotated[str, Field(max_length=32), AfterValidator(utils.title_and_strip)] | None = None
-    rating: Annotated[float, Field(ge=0, le=10), AfterValidator(utils.round_rating)] | None = None
-    type: Literal[
-        "Movie",
-        "Series",
-        "Animated Film",
-        "Animated Series",
-        "Anime Film",
-        "Anime Series",
-    ] | None = None
+    title: (
+        Annotated[str, Field(max_length=32), AfterValidator(utils.title_and_strip)]
+        | None
+    ) = None
+    genre: (
+        Annotated[str, Field(max_length=32), AfterValidator(utils.title_and_strip)]
+        | None
+    ) = None
+    rating: (
+        Annotated[float, Field(ge=0, le=10), AfterValidator(utils.round_rating)] | None
+    ) = None
+    type: (
+        Literal[
+            "Movie",
+            "Series",
+            "Animated Film",
+            "Animated Series",
+            "Anime Film",
+            "Anime Series",
+        ]
+        | None
+    ) = None
     review: Annotated[str, Field(max_length=1000)] | None = None
 
 

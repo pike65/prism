@@ -6,11 +6,6 @@ from sqlalchemy.sql import func
 from database.session import Base
 
 
-# ============================================================
-# MEDIA DB MODELS
-# ============================================================
-
-
 class Media(Base):
     __tablename__ = "media"
 
