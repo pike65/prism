@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 
-
 from .models import Media
 from . import schemas
 
@@ -9,39 +8,39 @@ def get_all_media(db: Session):
     return db.query(Media).all()
 
 
-def get_media_by_id(db: Session, item_id: int):
-    return db.query(Media).filter(Media.id == item_id).first()
+def get_media_by_id(db: Session, media_id: int):
+    return db.query(Media).filter(Media.id == media_id).first()
 
 
-def add_new_media(db: Session, item_data: schemas.MediaCreateRequest):
-    db_item = Media(**item_data.model_dump())
+def add_new_media(db: Session, media_in: schemas.MediaCreateRequest):
+    db_media = Media(**media_in.model_dump())
 
-    db.add(db_item)
+    db.add(db_media)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_media)
+    return db_media
 
 
-def update_media(db: Session, item_id: int, item_data: schemas.MediaUpdateRequest):
-    db_item = db.query(Media).filter(Media.id == item_id).first()
-    if not db_item:
+def update_media(db: Session, media_id: int, media_in: schemas.MediaUpdateRequest):
+    db_media = db.query(Media).filter(Media.id == media_id).first()
+    if not db_media:
         return None
 
-    update_data = item_data.model_dump(exclude_unset=True)
+    update_data = media_in.model_dump(exclude_unset=True)
     for key, value in update_data.items():
-        setattr(db_item, key, value)
+        setattr(db_media, key, value)
 
-    db.add(db_item)
+    db.add(db_media)
     db.commit()
-    db.refresh(db_item)
-    return db_item
+    db.refresh(db_media)
+    return db_media
 
 
-def delete_media(db: Session, item_id: int):
-    db_item = db.query(Media).filter(Media.id == item_id).first()
-    if not db_item:
+def delete_media(db: Session, media_id: int):
+    db_media = db.query(Media).filter(Media.id == media_id).first()
+    if not db_media:
         return False
 
-    db.delete(db_item)
+    db.delete(db_media)
     db.commit()
     return True

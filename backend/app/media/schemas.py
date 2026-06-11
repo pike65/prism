@@ -2,7 +2,6 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, Field, AfterValidator
 from datetime import datetime
 
-
 from . import utils
 
 
